@@ -39,9 +39,15 @@ def main() -> None:
     stack.push(Complex(1, 2))
     stack.push(Complex(0, 5))
     stack.print()
+    print(f"Size: {stack.get_length()}")
     print("==========")
     stack.push_at_beginning(Complex(4, 4))
-    # stack.print()
+    stack.print()
+    print(f"Size: {stack.get_length()}")
+    print("==========")
+    stack.push(Complex(4, 4))
+    stack.print()
+    print(f"Size: {stack.get_length()}")
 
 
 if __name__ == "__main__":
