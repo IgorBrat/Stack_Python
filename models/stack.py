@@ -5,7 +5,7 @@ from stack.models.node import Node
 class Stack:
     def __init__(self):
         self.__head = None
-        self.__length = 0
+        self.__size = 0
 
     def push(self, el: Complex) -> None:
         if self.__head is None:
@@ -13,19 +13,19 @@ class Stack:
         else:
             new_node = Node(el, self.__head)
             self.__head = new_node
-        self.__length += 1
+        self.__size += 1
 
     def push_at_beginning(self, el: Complex) -> None:
         if self.__head is None:
             self.__head = Node(el)
         else:
             itr = self.__head
-            index = self.__length
+            index = self.__size
             while index - 1:
                 index -= 1
                 itr = itr.next
             itr.next = Node(el)
-        self.__length += 1
+        self.__size += 1
 
     def pop(self):
         if self.__head is None:
@@ -33,15 +33,15 @@ class Stack:
         else:
             el_to_pop = self.__head.el
             self.__head = self.__head.next
-            self.__length -= 1
+            self.__size -= 1
             return el_to_pop
 
-    def find_el(self, el: Complex):
+    def find_el_pos(self, el: Complex):
         if self.__head is None:
             return "Stack is empty"
         else:
             itr = self.__head
-            index = self.__length
+            index = self.__size
             while itr:
                 if itr.el.__eq__(el):
                     return index
@@ -52,11 +52,11 @@ class Stack:
     def find_el_by_index(self, index: int):
         if self.__head is None:
             return "Stack is empty"
-        elif index > self.__length or index < 1:
+        elif index > self.__size or index < 1:
             return "Index out of range"
         else:
             itr = self.__head
-            pos = self.__length
+            pos = self.__size
             while itr:
                 if pos == index:
                     return itr.el
@@ -65,7 +65,7 @@ class Stack:
             return "No such element"
 
     def clear(self):
-        while self.__length > 0:
+        while self.__size > 0:
             self.pop()
 
     def print(self):
@@ -77,5 +77,5 @@ class Stack:
                 print(itr.el.__repr__())
                 itr = itr.next
 
-    def get_length(self):
-        return self.__length
+    def get_size(self):
+        return self.__size
