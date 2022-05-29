@@ -21,7 +21,7 @@ class Stack:
         else:
             itr = self.__head
             index = self.__length
-            while index-1:
+            while index - 1:
                 index -= 1
                 itr = itr.next
             itr.next = Node(el)
@@ -37,7 +37,32 @@ class Stack:
             return el_to_pop
 
     def find_el(self, el: Complex):
-        pass
+        if self.__head is None:
+            return "Stack is empty"
+        else:
+            itr = self.__head
+            index = self.__length
+            while itr:
+                if itr.el.__eq__(el):
+                    return index
+                index -= 1
+                itr = itr.next
+            return "No such element"
+
+    def find_el_by_index(self, index: int):
+        if self.__head is None:
+            return "Stack is empty"
+        elif index > self.__length or index < 1:
+            return "Index out of range"
+        else:
+            itr = self.__head
+            pos = self.__length
+            while itr:
+                if pos == index:
+                    return itr.el
+                pos -= 1
+                itr = itr.next
+            return "No such element"
 
     def clear(self):
         while self.__length > 0:
