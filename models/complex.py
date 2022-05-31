@@ -2,6 +2,7 @@ from __future__ import annotations
 
 
 class Complex:
+    """Complex number, stores its real and imaginary coordinate"""
     def __init__(self, re: int, im: int):
         self.__re = re
         self.__im = im
