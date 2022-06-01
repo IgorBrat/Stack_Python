@@ -56,7 +56,7 @@ class Stack:
             index = self.__size
             while itr:
                 if itr.element.__eq__(element):
-                    return index
+                    return index - 1
                 index -= 1
                 itr = itr.next
             return "No such element"
@@ -69,13 +69,13 @@ class Stack:
         """
         if self.__head is None:
             return "Stack is empty"
-        elif index > self.__size or index < 1:
+        elif index > self.__size - 1 or index < 0:
             return "Index out of range"
         else:
             itr = self.__head
             pos = self.__size
             while itr:
-                if pos == index:
+                if pos == index + 1:
                     return itr.element
                 pos -= 1
                 itr = itr.next
